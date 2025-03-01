@@ -1,16 +1,38 @@
-import express from 'express';
+const express = require('express');
 const app = express();
 
-const PORT= process.env.PORT || 3000;
+const jokes = [
+    {
+        id: 1,
+        title: "Why did the scarecrow win an award?",
+        content: "Because he was outstanding in his field!"
+    },
+    {
+        id: 2,
+        title: "What do you call fake spaghetti?",
+        content: "An impasta!"
+    },
+    {
+        id: 3,
+        title: "Why don’t skeletons fight each other?",
+        content: "They don’t have the guts."
+    },
+    {
+        id: 4,
+        title: "What do you call cheese that isn't yours?",
+        content: "Nacho cheese!"
+    },
+    {
+        id: 5,
+        title: "Why was the math book sad?",
+        content: "It had too many problems."
+    }
+];
 
-app.get("/",(req,res)=>{
-    res.send("here you will get jokes if You go to /jokes")
+app.get("/jokes", (req, res) => {
+    res.json(jokes);
 });
 
-app.get("/",(req,res)=>{
-    res.send("here you will get jokes if You go to /jokes")
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
 });
-
-app.listen((PORT),()=>{
-    console.log(`Server is running on port ${PORT}`);
- });
